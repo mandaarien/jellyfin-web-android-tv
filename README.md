@@ -15,3 +15,27 @@ An Android TV WebView shell app that runs the Jellyfin web client with custom CS
 Coming soon...
 
 ## 📦 Installation
+
+🔧 Configuration
+At first launch, the app will ask you to:
+
+Enter your Jellyfin server URL
+
+Select a CSS style (minimal, standard, full)
+
+Choose a focus feedback mode (scale, outline, subtle)
+
+The app saves your settings and loads Jellyfin with custom parameters:
+
+https://yourserver.com/?tvcss=standard&focus=scale
+
+
+🎨 CSS Customization
+
+You can host your CSS and JavaScript on GitHub Pages or locally.
+Example to include in Jellyfin’s dashboard:
+
+@import url("https://mandaarien.github.io/jellyfin-web-android-tv/web/tv.css");
+
+
+### ✅ `LICENSE` (MIT)
