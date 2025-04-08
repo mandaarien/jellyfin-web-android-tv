@@ -2,6 +2,20 @@
 
 An Android TV WebView shell app that runs the Jellyfin web client with custom CSS and navigation optimizations for remote control use.
 
+A lightweight Android TV wrapper for Jellyfin Web, optimized for TV navigation and theming.
+
+## Features
+
+- Native-feeling TV interface using WebView
+- Custom CSS themes and focus styles
+- Server selection and setup screen
+- Hardware-accelerated video playback
+
+## Project Structure
+
+This app uses a WebView to load a local setup page which redirects to your self-hosted Jellyfin instance with custom styling parameters.
+
+
 ## 🚀 Features
 
 - Native Android TV support with WebView
@@ -15,6 +29,14 @@ An Android TV WebView shell app that runs the Jellyfin web client with custom CS
 Coming soon...
 
 ## 📦 Installation
+
+Wenn du Jellyfin selbst hostest, kannst du das Skript direkt in deine index.html injizieren:
+
+html
+Kopieren
+Bearbeiten
+<script src="https://mandaarien.github.io/jellyfin-web-android-tv/web/tv-setup.js"></script>
+Oder über einen nginx-Proxy / Reverse Proxy injecten – je nach Setup.
 
 🔧 Configuration
 At first launch, the app will ask you to:

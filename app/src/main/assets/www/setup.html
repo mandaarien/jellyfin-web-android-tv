@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Jellyfin TV Setup</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #121212;
+            color: white;
+            padding: 2em;
+        }
+        
+        label,
+        select,
+        input,
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+            font-size: 1.1em;
+        }
+        
+        input,
+        select {
+            padding: 0.5em;
+            background: #1e1e1e;
+            border: none;
+            color: white;
+            border-radius: 0.5em;
+        }
+        
+        button {
+            background: #03a9f4;
+            color: white;
+            padding: 0.8em;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Jellyfin TV</h1>
+
+    <label>Server URL</label>
+    <input id="server" placeholder="http://192.168.0.100:8096" />
+
+    <label>Focus Style</label>
+    <select id="focus">
+    <option value="focus-scale">Scale</option>
+    <option value="focus-outline">Outline</option>
+    <option value="focus-opacity">Opacity</option>
+  </select>
+
+    <label>CSS Theme</label>
+    <select id="theme">
+    <option value="theme-standard">Standard</option>
+    <option value="theme-minimal">Minimal</option>
+    <option value="theme-full">Full</option>
+  </select>
+
+    <button onclick="launch()">Start Jellyfin</button>
+
+    <script>
+        function launch() {
+            const server = document.getElementById('server').value.trim();
+            const focus = document.getElementById('focus').value;
+            const theme = document.getElementById('theme').value;
+
+            if (!server.startsWith("http")) {
+                alert("Invalid server URL.");
+                return;
+            }
+
+            localStorage.setItem("jellyfin_server", server);
+            localStorage.setItem("jellyfin_focus", focus);
+            localStorage.setItem("jellyfin_theme", theme);
+
+            window.location.href = `${server}/web/index.html?tvcss=${focus}&theme=${theme}`;
+        }
+    </script>
+</body>
+
+</html>
