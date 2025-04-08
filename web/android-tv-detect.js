@@ -26,3 +26,18 @@ window.addEventListener("DOMContentLoaded", () => {
     const theme = localStorage.getItem("jellyfin_theme") || "theme-standard";
     loadCSS(`${theme}.css`);
 });
+
+(function() {
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    const isAndroidTV =
+        userAgent.includes("android") &&
+        (userAgent.includes("tv") || userAgent.includes("aft") || userAgent.includes("shield"));
+
+    if (isAndroidTV) {
+        document.documentElement.classList.add("android-tv");
+        console.log("[Jellyfin-TV] Android TV detected – .android-tv class added.");
+    } else {
+        console.log("[Jellyfin-TV] Android TV NOT detected – default web UI.");
+    }
+})();
