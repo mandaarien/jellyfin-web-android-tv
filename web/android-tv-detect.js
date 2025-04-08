@@ -6,7 +6,7 @@ function isAndroidTV() {
 function loadCSS(name) {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = `https://raw.githubusercontent.com/dein-benutzername/jellyfin-web-android-tv/main/${name}`;
+    link.href = `https://cdn.jsdelivr.net/gh/mandaarien/jellyfin-web-android-tv/web/${name}`;
     document.head.appendChild(link);
 }
 
