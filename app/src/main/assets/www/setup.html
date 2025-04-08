@@ -71,17 +71,22 @@
             const focus = document.getElementById('focus').value;
             const theme = document.getElementById('theme').value;
 
+            // Überprüfen, ob die URL mit 'http' oder 'https' beginnt
             if (!server.startsWith("http")) {
                 alert("Invalid server URL.");
                 return;
             }
 
+            // Speichern der Eingabewerte im localStorage
             localStorage.setItem("jellyfin_server", server);
             localStorage.setItem("jellyfin_focus", focus);
             localStorage.setItem("jellyfin_theme", theme);
 
-            window.location.href = `${server}?tvcss=${focus}&theme=${theme}`;
+            // URL mit den Parametern erstellen
+            let newUrl = `${server}?tvcss=${encodeURIComponent(focus)}&theme=${encodeURIComponent(theme)}`;
 
+            // Weiterleitung zur neuen URL
+            window.location.href = newUrl;
         }
     </script>
 </body>

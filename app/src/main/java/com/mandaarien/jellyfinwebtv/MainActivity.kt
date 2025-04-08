@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
         webSettings.allowContentAccess = true
 
         webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);  // Cache deaktivieren
 
         // Enable hardware acceleration
         webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
@@ -40,7 +41,9 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        webView.clearCache(true);
         // Load local setup screen (initial config)
+
         webView.loadUrl("file:///android_asset/www/setup.html")
     }
 
