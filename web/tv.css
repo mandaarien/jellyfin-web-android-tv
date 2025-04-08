@@ -1,19 +1,72 @@
+/* tv.css – Jellyfin Web UI for Android TV */
 
-/* tv.css - Hauptlayout-Anpassungen für Jellyfin auf Android TV */
-body[data-tvcss="minimal"] .header,
-body[data-tvcss="minimal"] .searchBox,
-body[data-tvcss="minimal"] .userMenu {
+
+/* =============== GENERAL CLEANUP =============== */
+
+body {
+    font-size: 1.1em;
+    user-select: none;
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+}
+
+
+/* Hide unnecessary desktop elements */
+
+.headerUserMenu,
+.castButton,
+.headerTop,
+.mainDrawer {
     display: none !important;
 }
 
-.focus-large:focus-visible {
+
+/* =============== FOCUS FEEDBACK =============== */
+
+ :focus-visible {
+    outline: none !important;
     transform: scale(1.06);
-    transition: transform 0.2s ease;
-    z-index: 10;
+    transition: transform 0.1s ease-out;
+    z-index: 5;
 }
 
-.focus-small:focus-visible {
-    outline: 2px solid #3fa9f5;
-    border-radius: 4px;
-    transition: outline 0.2s ease;
+
+/* Optional: differentiate types of focus feedback */
+
+.focus-scale :focus-visible {
+    transform: scale(1.08);
+}
+
+.focus-outline :focus-visible {
+    outline: 2px solid #03a9f4 !important;
+}
+
+.focus-opacity :focus-visible {
+    filter: brightness(1.3);
+}
+
+
+/* =============== MEDIA ELEMENTS =============== */
+
+.card,
+.listItem,
+.emby-button {
+    border-radius: 0.5em;
+    transition: transform 0.1s, filter 0.1s;
+}
+
+
+/* Hide scrollbars */
+
+ ::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =============== CUSTOMIZE COLORS =============== */
+
+ :root {
+    --theme-primary: #03a9f4;
+    --theme-accent: #2196f3;
+    --theme-background: #101010;
 }
