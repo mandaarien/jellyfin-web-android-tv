@@ -1,10 +1,28 @@
-// Funktion zur Erkennung von Android TV
-function detectAndroidTV() {
-    var userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("android") && userAgent.includes("tv")) {
-        document.body.classList.add("android-tv");
-    }
+function isAndroidTV() {
+    const ua = navigator.userAgent.toLowerCase();
+    return ua.includes("android") && ua.includes("tv");
 }
 
-// Erkenne Android TV nach dem Laden der Seite
-window.onload = detectAndroidTV;
+function loadCSS(name) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = `https://raw.githubusercontent.com/dein-benutzername/jellyfin-web-android-tv/main/${name}`;
+    document.head.appendChild(link);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    if (!isAndroidTV()) return;
+
+    document.body.classList.add("android-tv");
+
+    // CSS-Basis für Android TV
+    loadCSS("tv.css");
+
+    // Fokusstil aus localStorage
+    const focusStyle = localStorage.getItem("jellyfin_focus") || "focus-scale";
+    loadCSS(`${focusStyle}.css`);
+
+    // Theme aus localStorage
+    const theme = localStorage.getItem("jellyfin_theme") || "theme-standard";
+    loadCSS(`${theme}.css`);
+});
