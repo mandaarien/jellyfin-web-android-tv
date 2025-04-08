@@ -1,4 +1,4 @@
-package com.mandaarien.jellyfintv
+package com.mandaarien.jellyfinwebtv
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -26,6 +26,8 @@ class MainActivity : ComponentActivity() {
         webSettings.mediaPlaybackRequiresUserGesture = false
         webSettings.allowFileAccess = true
         webSettings.allowContentAccess = true
+
+        webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
 
         // Enable hardware acceleration
         webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
