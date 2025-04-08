@@ -1,21 +1,38 @@
 function isAndroidTV() {
-    const ua = navigator.userAgent.toLowerCase();
-    return ua.includes("android") && ua.includes("tv");
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    const isTV =
+        userAgent.includes("android") &&
+        (userAgent.includes("tv") ||
+            userAgent.includes("aft") ||
+            userAgent.includes("shield"));
+
+    console.log(`[Jellyfin-TV] User-Agent: ${userAgent}`);
+    console.log(`[Jellyfin-TV] Android TV detected: ${isTV}`);
+
+    return isTV;
 }
 
 function loadCSS(name) {
+    const href = `https://cdn.jsdelivr.net/gh/mandaarien/jellyfin-web-android-tv/web/${name}`;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = `https://cdn.jsdelivr.net/gh/mandaarien/jellyfin-web-android-tv/web/${name}`;
+    link.href = href;
     document.head.appendChild(link);
+
+    console.log(`[Jellyfin-TV] Loaded CSS: ${name}`);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    if (!isAndroidTV()) return;
+    if (!isAndroidTV()) {
+        console.log("[Jellyfin-TV] Not an Android TV device – skipping TV UI styles.");
+        return;
+    }
 
     document.body.classList.add("android-tv");
+    console.log("[Jellyfin-TV] .android-tv class added to <body>");
 
-    // CSS-Basis für Android TV
+    // Base styles
     loadCSS("tv.css");
 
     // Fokusstil aus localStorage
@@ -26,18 +43,3 @@ window.addEventListener("DOMContentLoaded", () => {
     const theme = localStorage.getItem("jellyfin_theme") || "theme-standard";
     loadCSS(`${theme}.css`);
 });
-
-(function() {
-    const userAgent = navigator.userAgent.toLowerCase();
-
-    const isAndroidTV =
-        userAgent.includes("android") &&
-        (userAgent.includes("tv") || userAgent.includes("aft") || userAgent.includes("shield"));
-
-    if (isAndroidTV) {
-        document.documentElement.classList.add("android-tv");
-        console.log("[Jellyfin-TV] Android TV detected – .android-tv class added.");
-    } else {
-        console.log("[Jellyfin-TV] Android TV NOT detected – default web UI.");
-    }
-})();
