@@ -13,6 +13,7 @@ body {
 
 /* Hide unnecessary desktop elements */
 
+.skinHeader,
 .headerUserMenu,
 .castButton,
 .headerTop,
