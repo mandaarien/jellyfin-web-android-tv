@@ -1,0 +1,19 @@
+
+/* tv.css - Hauptlayout-Anpassungen für Jellyfin auf Android TV */
+body[data-tvcss="minimal"] .header,
+body[data-tvcss="minimal"] .searchBox,
+body[data-tvcss="minimal"] .userMenu {
+    display: none !important;
+}
+
+.focus-large:focus-visible {
+    transform: scale(1.06);
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.focus-small:focus-visible {
+    outline: 2px solid #3fa9f5;
+    border-radius: 4px;
+    transition: outline 0.2s ease;
+}
