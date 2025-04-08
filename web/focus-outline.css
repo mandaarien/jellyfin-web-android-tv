@@ -1,0 +1,7 @@
+.android-tv [tabindex]:focus,
+.android-tv button:focus,
+.android-tv a:focus {
+    outline: 2px solid #00bcd4;
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+}

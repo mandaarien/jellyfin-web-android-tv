@@ -1,0 +1,7 @@
+.android-tv [tabindex]:focus,
+.android-tv button:focus,
+.android-tv a:focus {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    outline: none;
+}

@@ -1,0 +1,13 @@
+body.android-tv {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.android-tv .card {
+    background-color: #f5f5f5;
+}
+
+.android-tv .header,
+.android-tv .footer {
+    background-color: #eeeeee;
+}
